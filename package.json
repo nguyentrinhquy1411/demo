@@ -1,0 +1,21 @@
+{
+  "name": "real-estate-mvp-cache-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "benchmark": "node benchmark/cache-flow-benchmark.mjs --write-report"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.21",
+    "typescript": "5.7.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "@tanstack/react-query": "5.62.16"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,477 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600;700&family=Manrope:wght@500;700;800&display=swap");
+
+:root {
+    color-scheme: dark;
+    --ink: #f3ead7;
+    --muted: #a89d8c;
+    --paper: #17130d;
+    --panel: rgba(39, 31, 21, 0.76);
+    --panel-strong: rgba(62, 49, 32, 0.9);
+    --line: rgba(243, 234, 215, 0.15);
+    --gold: #e6b85c;
+    --green: #72e0a5;
+    --red: #ff8a72;
+    --blue: #80bfff;
+    --violet: #c39cff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: Manrope, sans-serif;
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(230, 184, 92, 0.22),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 88% 0%,
+            rgba(128, 191, 255, 0.18),
+            transparent 26rem
+        ),
+        linear-gradient(135deg, #0c0a07 0%, #17130d 48%, #24180c 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 50% 20%, black, transparent 72%);
+}
+
+button,
+select,
+input {
+    font: inherit;
+}
+button {
+    cursor: pointer;
+}
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+}
+
+.shell {
+    width: min(1440px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 38px 0 56px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+h1 {
+    max-width: 980px;
+    margin-bottom: 18px;
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(3rem, 8vw, 7.8rem);
+    line-height: 0.82;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+}
+h2 {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+h3 {
+    margin: 12px 0 6px;
+    font-size: 1.02rem;
+    line-height: 1.05;
+}
+.lede {
+    max-width: 780px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.architecture-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: linear-gradient(
+        135deg,
+        rgba(243, 234, 215, 0.1),
+        rgba(243, 234, 215, 0.03)
+    );
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+}
+.architecture-card span {
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.24);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+}
+.architecture-card b {
+    color: var(--gold);
+}
+
+.panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: var(--panel);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 24px 90px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(18px);
+}
+
+.redis-explainer {
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr;
+    gap: 18px;
+    align-items: start;
+    padding: 22px;
+    margin-bottom: 24px;
+}
+.redis-explainer h2 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+.redis-explainer ol {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    line-height: 1.55;
+}
+.redis-explainer strong {
+    color: var(--ink);
+}
+.redis-explainer code {
+    display: inline;
+    padding: 3px 6px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 0.7fr repeat(4, auto);
+    gap: 14px;
+    align-items: end;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+select,
+input[type="range"] {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.28);
+}
+select {
+    padding: 12px;
+}
+input[type="range"] {
+    accent-color: var(--gold);
+}
+.controls strong {
+    display: block;
+    margin-top: 6px;
+    color: var(--gold);
+}
+button {
+    border: 0;
+    border-radius: 16px;
+    padding: 12px 16px;
+    color: #161006;
+    background: var(--gold);
+    font-weight: 800;
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease,
+        background 0.18s ease;
+}
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+button.ghost {
+    color: var(--ink);
+    background: rgba(243, 234, 215, 0.09);
+    border: 1px solid var(--line);
+}
+button.accent {
+    background: var(--green);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(340px, 0.75fr);
+    gap: 24px;
+}
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    padding: 22px;
+    border-bottom: 1px solid var(--line);
+}
+.status,
+.source {
+    border-radius: 999px;
+    padding: 8px 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    background: rgba(243, 234, 215, 0.09);
+}
+.status.redis,
+.source.redis {
+    color: var(--green);
+}
+.status.postgres,
+.source.postgres {
+    color: var(--blue);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 22px;
+}
+.listing-card {
+    position: relative;
+    min-height: 270px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    padding: 0;
+    color: var(--ink);
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+}
+.listing-card.selected {
+    outline: 2px solid var(--gold);
+}
+.listing-card img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92) contrast(1.06);
+}
+.listing-card h3,
+.listing-card p {
+    padding: 0 16px;
+}
+.listing-card p {
+    color: var(--muted);
+}
+.price {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: #150f08;
+    background: var(--gold);
+    font-weight: 900;
+}
+.load-more {
+    width: calc(100% - 44px);
+    margin: 0 22px 22px;
+}
+
+.detail-panel {
+    padding: 22px;
+}
+.detail-loading {
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 18px;
+    color: var(--gold);
+    background: rgba(230, 184, 92, 0.1);
+}
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+.detail img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 22px;
+}
+.detail p,
+.muted {
+    color: var(--muted);
+    line-height: 1.65;
+}
+code {
+    display: block;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px;
+    color: var(--gold);
+    background: rgba(0, 0, 0, 0.3);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+}
+
+.telemetry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+}
+.metric {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.22);
+}
+.metric span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+.metric strong {
+    font-family: "Instrument Serif", serif;
+    font-size: 3rem;
+    line-height: 1;
+}
+.metric.good strong {
+    color: var(--green);
+}
+.metric.warn strong {
+    color: var(--red);
+}
+
+.bottom-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+.cache-panel {
+    padding: 20px;
+    min-height: 250px;
+}
+.cache-panel h2 {
+    margin-bottom: 14px;
+}
+.cache-panel code {
+    margin-bottom: 10px;
+}
+.event-log p {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 10px;
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+}
+.event-log span {
+    color: var(--ink);
+}
+.event-log .fe {
+    color: var(--gold);
+}
+.event-log .hit {
+    color: var(--green);
+}
+.event-log .miss {
+    color: var(--red);
+}
+.event-log .db {
+    color: var(--blue);
+}
+.event-log .invalidate {
+    color: var(--violet);
+}
+.event-log .set {
+    color: var(--gold);
+}
+
+.skeleton-card {
+    min-height: 270px;
+    border-radius: 26px;
+    background: linear-gradient(
+        110deg,
+        rgba(255, 255, 255, 0.05) 8%,
+        rgba(255, 255, 255, 0.12) 18%,
+        rgba(255, 255, 255, 0.05) 33%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.1s linear infinite;
+}
+@keyframes shimmer {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero,
+    .grid,
+    .bottom-grid,
+    .redis-explainer {
+        grid-template-columns: 1fr;
+    }
+    .controls {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .controls,
+    .cards,
+    .telemetry {
+        grid-template-columns: 1fr;
+    }
+    h1 {
+        font-size: 3.4rem;
+    }
+}
